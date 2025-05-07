@@ -9,6 +9,8 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Header from '../components/Header'
 import { AuthContext } from '../context/AuthContext'
+import { TouchableOpacity } from 'react-native'
+import { ImageBackground } from 'react-native'
 
 export default function SignUpScreen({ navigation }) {
   const { signUp } = useContext(AuthContext)
@@ -24,10 +26,17 @@ export default function SignUpScreen({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top']}>
+    <ImageBackground
+  source={require('../../assets/wallpaper.jpg')}
+  style={styles.background}
+  blurRadius={7}
+    >
+      <View style={styles.overlay} />
+  <SafeAreaView style={styles.safe} edges={['top']}>
       <Header title="Sign Up" />
 
       <View style={styles.container}>
+      <Text style={styles.app}>Rent A Car</Text>
         <TextInput
           placeholder="Full Name"
           value={fullName}
@@ -50,7 +59,9 @@ export default function SignUpScreen({ navigation }) {
         />
         {error && <Text style={styles.error}>{error}</Text>}
 
-        <Button title="Sign Up" onPress={handleSignUp} />
+        <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+  <Text style={styles.buttonText}>Sign Up</Text>
+</TouchableOpacity>
 
         <Text
           style={styles.link}
@@ -59,14 +70,15 @@ export default function SignUpScreen({ navigation }) {
           Already have an account? Sign In
         </Text>
       </View>
-    </SafeAreaView>
+      </SafeAreaView>
+      </ImageBackground>
   )
 }
 
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
   },
   container: {
     flex: 1,
@@ -75,7 +87,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: 'black',
     padding: 12,
     marginBottom: 12,
     borderRadius: 4,
@@ -87,9 +99,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   link: {
-    color: '#2e78b7',
+    color: '#007bff',
     marginTop: 16,
     textAlign: 'center',
     fontSize: 16,
+  },
+  app: {
+    fontSize: 32, 
+    fontWeight: 'bold', 
+    textAlign: 'center', 
+    marginBottom: 100,
+    color: '#007bff', 
+  },
+  button: {
+    backgroundColor: 'white',
+    borderWidth: 2,
+    borderColor: '#007bff',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 6,
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  buttonText: {
+    color: '#007bff',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+  },  
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(255, 255, 255, 0.75)',
   },
 })

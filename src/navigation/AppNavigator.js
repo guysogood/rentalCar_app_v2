@@ -3,15 +3,10 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Ionicons from '@expo/vector-icons/Ionicons'
-
 import { AuthContext } from '../context/AuthContext'
-
-// Auth Screens
 import SplashScreen   from '../screens/SplashScreen'
 import SignInScreen   from '../screens/SignInScreen'
 import SignUpScreen   from '../screens/SignUpScreen'
-
-// App Screens
 import HomeScreen          from '../screens/HomeScreen'
 import CarDetailsScreen    from '../screens/CarDetailsScreen'
 import BookingScreen       from '../screens/BookingScreen'
@@ -21,7 +16,6 @@ import ProfileScreen       from '../screens/ProfileScreen'
 const Stack = createStackNavigator()
 const Tab   = createBottomTabNavigator()
 
-// Bottom tabs for the logged-in user
 function MainTabs() {
   return (
     <Tab.Navigator
@@ -45,20 +39,16 @@ function MainTabs() {
   )
 }
 
-// Stack for the authenticated portion
 function AppStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* first show the tabs */}
       <Stack.Screen name="MainTabs" component={MainTabs} />
-      {/* then any deeper screens */}
       <Stack.Screen name="CarDetails" component={CarDetailsScreen} />
       <Stack.Screen name="Booking"    component={BookingScreen} />
     </Stack.Navigator>
   )
 }
 
-// Stack for sign-in / sign-up
 function AuthStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -71,7 +61,6 @@ function AuthStack() {
 export default function AppNavigator() {
   const { user, loading } = useContext(AuthContext)
 
-  // While we’re checking auth status, show splash
   if (loading) return <SplashScreen />
 
   return (

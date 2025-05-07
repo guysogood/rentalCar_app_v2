@@ -9,6 +9,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Header from '../components/Header'
 import { AuthContext } from '../context/AuthContext'
+import { TouchableOpacity } from 'react-native'
+import { ImageBackground } from 'react-native'
+
 
 export default function SignInScreen({ navigation }) {
   const { signIn } = useContext(AuthContext)
@@ -23,7 +26,14 @@ export default function SignInScreen({ navigation }) {
   }
 
   return (
-    <SafeAreaView style={styles.safe} edges={['top']}>
+    <ImageBackground
+  source={require('../../assets/wallpaper.jpg')}
+  style={styles.background}
+  blurRadius={7}
+    >
+      <View style={styles.overlay} />
+  <SafeAreaView style={styles.safe} edges={['top']}>
+
       <Header title="Sign In" />
       
       <View style={styles.container}>
@@ -45,7 +55,9 @@ export default function SignInScreen({ navigation }) {
         />
         {error && <Text style={styles.error}>{error}</Text>}
 
-        <Button title="Sign In" onPress={handleSignIn} />
+        <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+  <Text style={styles.buttonText}>Sign In</Text>
+</TouchableOpacity>
 
         <Text
           style={styles.link}
@@ -54,14 +66,16 @@ export default function SignInScreen({ navigation }) {
           Don't have an account? Sign Up
         </Text>
       </View>
-    </SafeAreaView>
+      </SafeAreaView>
+</ImageBackground>
+
   )
 }
 
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
   },
   container: {
     flex: 1,
@@ -70,7 +84,7 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: 'black',
     padding: 12,
     marginBottom: 12,
     borderRadius: 4,
@@ -82,7 +96,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   link: {
-    color: '#2e78b7',
+    color: '#007bff',
     marginTop: 16,
     textAlign: 'center',
     fontSize: 16,
@@ -92,6 +106,27 @@ const styles = StyleSheet.create({
     fontWeight: 'bold', 
     textAlign: 'center', 
     marginBottom: 100,
-    color: '#333', 
+    color: '#007bff', 
+  },
+  button: {
+    backgroundColor: '#007bff',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 6,
+    alignItems: 'center',
+    marginTop: 8,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+  },  
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(255, 255, 255, 0.75)',
   },
 })

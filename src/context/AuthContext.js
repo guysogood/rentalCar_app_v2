@@ -8,12 +8,11 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // 1. Load existing session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null)
       setLoading(false)
     })
-    // 2. Listen for auth changes
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_, session) => {
       setUser(session?.user ?? null)
     })
@@ -21,17 +20,14 @@ export function AuthProvider({ children }) {
   }, [])
 
   const signUp = async ({ fullName, email, password }) => {
-    // Enable email sign-ups & disable confirmations in Supabase settings
     const { data: signUpData, error: signUpError } =
       await supabase.auth.signUp({ email, password, options: { data: { full_name: fullName } } })
     if (signUpError) return { error: signUpError }
 
-    // Auto-login
     const { data: signInData, error: signInError } =
       await supabase.auth.signInWithPassword({ email, password })
     if (signInError) return { error: signInError }
 
-    // Create profiles row
     const userId = signInData.user.id
     await supabase.from('profiles').insert([{ id: userId, full_name: fullName }])
     return {}
