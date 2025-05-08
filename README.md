@@ -15,3 +15,6 @@ expo install @react-native-community/datetimepicker \
 
 # Supabase client & icon set
 npm install @supabase/supabase-js @expo/vector-icons
+
+# Expo SDK
+The project was built in Expo SDK 52.0.46 which can not be run in later bersion. Please use Expo Go application oniOS simulator or open webhosting.
