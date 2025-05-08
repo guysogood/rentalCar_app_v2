@@ -1,20 +1,40 @@
-# rentalCar_app
+## Car rental app - DES427
 
-# Core navigation & dependencies
-npm install @react-navigation/native \
-            @react-navigation/stack \
-            @react-navigation/bottom-tabs \
-            react-native-screens \
-            react-native-safe-area-context \
-            react-native-gesture-handler \
-            react-native-reanimated
+---
 
-# Date picker & async storage (use expo install if using Expo)
-expo install @react-native-community/datetimepicker \
-             @react-native-async-storage/async-storage
+## Members (Group 11)
 
-# Supabase client & icon set
-npm install @supabase/supabase-js @expo/vector-icons
+- Kawisara Premwinai 6522770708
+- Saharat Yuanthong 6522770799
+- Jakrapat Wongpradu 6522771045
+- Potcharaphon Eaksil 6522790201
 
-# Expo SDK
-The project was built in Expo SDK 52.0.46 which can not be run in later bersion. Please use Expo Go application on iOS simulator or open web hosting.
+---
+
+## 🔎 Project Overview
+
+**CarRentalApp** is mobile application for users to browse and rent cars. No payment integration—just sign up, search by date or brand/model, and confirm your booking with your name.
+
+---
+
+## ⭐ Features
+
+- **Sign Up / Sign In** (email & password, no email confirmation)  
+- **Fleet of 20+ cars** with make, model, color, type, transmission, seats, daily price  
+- **Search available cars** by date (single-day booking)  
+- **Filter by brand/model** via search box  
+- **Book a car**: enter your name, save to Supabase  
+- **My Bookings** tab: view your past rentals  
+- **Profile** tab: view account info (name, email, member since)  
+- **Safe-area & bottom-tab navigation**  
+
+*No admin panels, no payment flows.*
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: React Native (Expo)  
+- **Navigation**: React Navigation (Stack + Bottom Tabs)  
+- **Backend & Auth**: Supabase (PostgreSQL, Auth, RLS)   
+- **UI**: SafeAreaView, custom Header, basic React Native components
