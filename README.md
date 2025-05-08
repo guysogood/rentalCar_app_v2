@@ -4,10 +4,10 @@
 
 ## Members (Group 11)
 
-- Kawisara Premwinai 6522770708
-- Saharat Yuanthong 6522770799
-- Jakrapat Wongpradu 6522771045
-- Potcharaphon Eaksil 6522790201
+- Kawisara Premwinai 6522770708 https://github.com/mindkws
+- Saharat Yuanthong 6522770799 https://github.com/LUCUSZ
+- Jakrapat Wongpradu 6522771045 https://github.com/danjkpw
+- Potcharaphon Eaksil 6522790201 https://github.com/guysogood
 
 ---
 
@@ -20,7 +20,7 @@
 ## ⭐ Features
 
 - **Sign Up / Sign In** (email & password, no email confirmation)  
-- **Fleet of 20+ cars** with make, model, color, type, transmission, seats, daily price  
+- **Fleet of 20 cars** with make, model, color, type, transmission, seats, daily price  
 - **Search available cars** by date (single-day booking)  
 - **Filter by brand/model** via search box  
 - **Book a car**: enter your name, save to Supabase  
